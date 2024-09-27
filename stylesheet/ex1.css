@@ -1,0 +1,15 @@
+body{
+    background: #ffffff;
+}
+.white{
+    color: #ffffff;
+}
+#main{
+    width: 680px;
+    margin: 0 auto ;
+    background: #ffffff;
+}
+header{
+    background: url("../images/tokyo.jpg");
+    border: #ffffff 3px;
+}

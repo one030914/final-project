@@ -1,18 +1,15 @@
-body{
-    background: #ffffff;
-}
-.Black{
-    color: #000000;
-}
-.white{
-    color: #ffffff;
-}
-#main{
-    width: 680px;
-    margin: 0 auto ;
-    background: #ffffff;
-}
-header{
-    background: url("../images/tokyo.jpg");
-    border: #ffffff 3px;
-}
+body{     
+    background: #000;
+ }
+
+.white{     
+    color:#fff; 
+} 
+
+#main{     
+    width: 680px;     background: #fff;     margin: 0 auto; 
+} 
+
+header{     
+    background: url("../images/tokyo.jpg");     border: solid #fff 3px;     padding: 5px 0px 10px 0px; 
+ }

@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    background-color: rgb(50, 50, 50);
+    height: 100px;
+    width: 100%;
+}
+section{
+    background-color: rgb(8, 7, 27);
+}
+footer{
+    background-color: rgb(8, 7, 27);
+}
+h1{
+    color: aliceblue;
+}
+h2{
+    color: aliceblue;
+}
+header ul{
+    
+    position: absolute;/*絕對位置*/
+    line-height: 100px;
+    
+}
+header li{
+    display: inline;/*橫式排列*/
+    margin: right 4vw;/*vw是整體視窗寬度的百分比，會依據縮放自動變化*/
+}
+header a{
+    color: aliceblue;
+    text-decoration: none;
+}
+header a:hover{
+    color: rgb(202, 201, 141);
+    text-decoration: underline;
+}

@@ -49,6 +49,7 @@ header a:hover{
 }
 
 .title{
+    background-image: url(image/兵長賀圖.jpg);
     background-color: black;
     height: 100vh;
     background-repeat: no-repeat;
@@ -57,10 +58,24 @@ header a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
+#logo{
+    position: relative;
+    height: 30vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+
+
 .title h2{
-    font-size: 60px;
+    font-size: 60px;  
+    z-index: 1;  
+    position: relative
 }
 
 .me{

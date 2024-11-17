@@ -21,11 +21,8 @@
 
     <main>
         <section class="title">
-            <h2>自我介紹</h2>
-            
-            <img src="image/兵長賀圖.jpg" alt="兵長賀圖">
-            <img src="image/IMG_1989.png" alt="logo">
-            
+            <h2 id="text">自我介紹</h2>
+            <img src="image/IMG_1989.png" id="logo">
        </section>
         <section class="me">
             <img src="image/兵長賀圖.jpg" alt="兵長賀圖">
@@ -45,5 +42,15 @@
     <footer>
         <h2>社群</h2>
     </footer>
+    <script>
+        let logo =document.getElementById('logo');
+        let text =document.getElementById('text');
+
+        window.addEventListener('scroll',function(){
+            let value = window.scrollY;
+            logo.style.top = value * 0.25 + 'px';
+            text.style.top = value * 0.25 + 'px';
+        });
+    </script>
 </body>
 </html>

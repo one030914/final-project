@@ -123,7 +123,7 @@ header a:hover{
 
 .work{
     background-color: black;
-    height: 2000px;
+    height: 800px;
     display: flex;
     flex-direction: column;
 
@@ -134,48 +134,82 @@ header a:hover{
     margin-bottom: 20px;
     font-size: 60px;
     text-align: center;
-    position: relative
 }
 
 .box{
+    position: relative;
     display: flex;
-    flex-direction: column; /* 垂直排列 */
-    gap: 10px;
-    width: 100vw;
-    height: auto;
-    
+    height: 650px;
+    margin: 0;
 }
 
 .box-left{
     position: absolute;
-    width: 80px;
-    height: 800px;
+    width: 5vw;
+    height: 600px;
     color: #707070;
     text-align: center;
-    line-height: 800px;
+    line-height: 600px;
     font-size: 30px;
     font-weight: bold;
    
 }
 
-.box :hover {
+.box-right{
+    position: absolute;
+    right: 0;
+    width: 5vw;
+    height: 600px;
+    color: #707070;
+    text-align: center;
+    line-height: 600px;
+    font-size: 30px;
+    font-weight: bold;
+   
+}
+
+.box-left:hover {
     background-color: #00000050;
     color: #fff;
 }
 
-.box-img img{
-    width: 100vw;
-    height: auto;
+.box-right:hover {
+    background-color: #00000050;
+    color: #fff;
+}
+
+.box-img{
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 800px;
+    margin-left: 5vw;
+    opacity: 0;
+}
+
+.box-img:nth-child(1){
+    opacity: 1;
+}
+
+.box-img img{    
+    width: 100%;
+    height: 600px;;
     object-fit: cover;
     object-position: center;
 
+}
+
+.box-zhiding{
+    position: absolute;
+    bottom: 3px;
+    text-align: center;
+    width: 100%;
 }
 
 .box-zhiding ul{
     padding: 0;
     margin: 0 auto;
     list-style: none;
-    text-align: center;
     display: inline-block;
 }
 
@@ -184,7 +218,7 @@ header a:hover{
     height: 14px;
     border-radius: 100%;
     background-color: #707070;
-    float: left;
+    display: inline-block;
     margin-right: 10px;
 }
 
@@ -192,9 +226,3 @@ header a:hover{
     background-color: #fff;
 }
 
-.box-zhiding{
-    position: relative;
-    bottom: 3px;
-    text-align: center;
-
-}

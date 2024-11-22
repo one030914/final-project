@@ -1,15 +1,21 @@
-$(function(){
-    var index = 0;//標記當前圖片索引
-    setInterval(function(){
-        if(index == $(".box-img").length() - 1){
-            index = 0;
-            $(".box-img").css("opacity","0");
-            $(".box-img").eq(index).css("opacity","1");
-        }else{
-            index++;
-            $(".box-img").css("opacity","0");
-            $(".box-img").eq(index).css("opacity","1");
-        }
-     
-    },2000)
-})
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".box-img");
+    let index = 0;
+
+    function showNextImage() {
+        // 隐藏当前图片
+        images[index].classList.remove("active");
+
+        // 更新索引
+        index = (index + 1) % images.length;
+
+        // 显示下一张图片
+        images[index].classList.add("active");
+    }
+
+    // 初始化轮播，设置第一张图片为可见
+    images[index].classList.add("active");
+
+    // 每隔3秒切换一张图片
+    setInterval(showNextImage, 3000);
+});

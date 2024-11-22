@@ -184,12 +184,14 @@ header a:hover{
     width: 90%;
     height: 800px;
     margin-left: 5vw;
-    opacity: 0;
+    opacity: 0; /* 默认不可见 */
+    transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
 }
 
-.box-img:nth-child(1){
+.box-img.active{
     opacity: 1;
 }
+
 
 .box-img img{    
     width: 100%;

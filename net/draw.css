@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #292929;
+    height: 1000px;
+}
+
+header{
+    position: fixed;   
+    background-color: #292929d2;
+    backdrop-filter: blur(10px); /* 模糊背景 */
+    height: 100px;
+    width: 100%;
+    z-index: 10;
+}
+
+h1{
+    position: absolute;
+    color: aliceblue;
+    line-height: 100px;
+    margin-left: 7vw;   
+}
+
+header ul{  
+    line-height: 100px;
+    text-align: center;  
+}
+
+header li{
+    
+    display: inline;
+    margin-right:3vw;
+    
+}
+
+header a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: rgb(202, 201, 141);
+    text-decoration: underline;
+}
+
+footer{
+    display: flex;
+    background-color:  #292929;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top {
+    position: relative;
+    display: flex;
+    padding: 15px 30px;
+    background-color: #525252; /* 按钮背景色 */
+    color: #fff;     /* 按钮文字颜色 */
+    border: none; 
+    border-radius: 15px; /* 圆形按钮 */
+    cursor: pointer; 
+    font-size: 16px; 
+    align-items: center;
+}
+
+.back-to-top:hover {
+    background-color: #bfbfbf;
+}

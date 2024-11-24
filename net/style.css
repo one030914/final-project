@@ -21,9 +21,12 @@ header{
 }
 
 footer{
+    display: flex;
     background-color:  #292929;
     width: 100%;
     height: 100px;
+    align-items: center;
+    justify-content: center;
 }
 
 h1{
@@ -31,6 +34,7 @@ h1{
     color: aliceblue;
     line-height: 100px;
     margin-left: 7vw;   
+    font-size: 30px;
 }
 
 h2{
@@ -39,6 +43,7 @@ h2{
 }
 
 header ul{  
+    position: relative;
     line-height: 100px;
     text-align: center;  
 }
@@ -127,7 +132,7 @@ header a:hover{
 
 .work{
     background-color: black;
-    height: 800px;
+    height: 780px;
     display: flex;
     flex-direction: column;
 
@@ -178,10 +183,12 @@ header a:hover{
    
 }
 
-.box-left,.box-right:hover {
+.box-right:hover {
     color: #fff;
 }
-
+.box-left:hover {
+    color: #fff;
+}
 
 
 .box-img{
@@ -241,20 +248,86 @@ header a:hover{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 500px;
-    background-color: #000000;
+    height: 600px;
     text-align: center;
+    overflow: hidden;
+    align-items: center;
 }
 
-.social h2{
-    margin-top: 20px; 
-    margin-bottom: 20px;
+.blur-overlay {
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    background-image: url(image/兵長賀圖.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* 模糊 */
+}
+
+.blur-color{
+    position: absolute;
+    width: 100%;
+    height: 600px;
+     background-color: rgba(0, 0, 0, 0.592); /* 半透明黑色叠加 */
+     z-index: 1;
+}
+
+.social h2{ 
+    position: relative; /* 保证文字在模糊层之上 */
+    z-index: 2; /* 让文字不被背景遮盖 */
+    margin-top: 60px; 
+    margin-bottom: 10px;
     font-size: 60px;
 }
 
-.social-button{
+.content{
     position: relative;
     display: flex;
-    flex-direction: column;
+    z-index: 2;
+    top: 70px;
+}
 
+.social-button{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 50px;
+}
+
+.social-button :hover{
+    cursor: pointer;
+}
+
+.content li{
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    list-style: none;
+}
+
+.content a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.content a:hover{
+    color: rgb(202, 201, 141);
+    text-decoration: underline;
+}
+
+.back-to-top {
+    position: relative;
+    display: flex;
+    padding: 15px 30px;
+    background-color: #525252; /* 按钮背景色 */
+    color: #fff;     /* 按钮文字颜色 */
+    border: none; 
+    border-radius: 15px; /* 圆形按钮 */
+    cursor: pointer; 
+    font-size: 16px; 
+    align-items: center;
+}
+
+.back-to-top:hover {
+    background-color: #bfbfbf;
 }

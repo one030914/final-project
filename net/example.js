@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const backToTopButton = document.getElementById("backToTop");
     const images = document.querySelectorAll(".box-img");// 获取所有图片
     const prevButton = document.querySelector(".box-left");// 左按钮
     const nextButton = document.querySelector(".box-right");// 右按钮
@@ -35,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
     nextButton.addEventListener("click", function () {
         const newIndex = (index + 1) % images.length; // 计算下一张索引
         showImage(newIndex);
+    });
+
+    // 点击按钮回到顶部
+    backToTopButton.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0, // 滚动到顶部
+            behavior: "smooth", // 平滑滚动
+        });
     });
 });
 

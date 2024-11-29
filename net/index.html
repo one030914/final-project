@@ -20,10 +20,12 @@
     </header>
 
     <main>
-        <section class="title">
-            <h2 id="text">自我介紹</h2>
-            <img src="image/IMG_1989.png" id="logo" alt="logo">
-       </section>
+        <div class="gradient-overlay">
+            <section class="title">
+                <h2 id="text">自我介紹</h2>
+                <!-- <img src="image/IMG_1989.png" id="logo" alt="logo"> -->
+            </section>
+        </div>
         <section class="me">
             <img src="image/我.jpg" alt="我">
 
@@ -76,12 +78,12 @@
         <button id="backToTop" class="back-to-top">back to top ↑</button>
     </footer>
     <script>
-        let logo =document.getElementById('logo');
+        // let logo =document.getElementById('logo');
         let text =document.getElementById('text');
 
         window.addEventListener('scroll',function(){
             let value = window.scrollY;
-            logo.style.top = value * 0.25 + 'px';
+            // logo.style.top = value * 0.25 + 'px';
             text.style.top = value * 0.25 + 'px';
         });
     </script>

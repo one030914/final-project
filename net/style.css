@@ -8,7 +8,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #292929;
+    background-color: #0d0d0d;
 }
 
 header{
@@ -39,7 +39,7 @@ h1{
 
 h2{
     color: aliceblue;
-    
+
 }
 
 header ul{  
@@ -68,7 +68,7 @@ header a:hover{
 
 .title{
     position: relative;
-    background-image: url(image/兵長賀圖.jpg);
+    /* background-image: url(image/兵長賀圖.jpg); */
     background-color: black;
     height: 100vh;
     background-repeat: no-repeat;
@@ -78,6 +78,7 @@ header a:hover{
     align-items: center; /* 垂直居中 */
     justify-content: center; /* 水平居中 */
     overflow: hidden; /* 防止内容溢出 */
+    z-index: 8;
 }
 
 .gradient-overlay{
@@ -90,6 +91,11 @@ header a:hover{
     z-index: 1;
 }
 
+.mp4{
+    height: 100vh;
+    display: flex;
+    width: 100%;
+}
 
 /* #logo{
     position: relative;
@@ -111,8 +117,20 @@ header a:hover{
 }
 
 .me{
+    position: relative;
     height: 800px;
-    display: flex;    
+    display: flex; 
+    z-index: 7;   
+}
+
+.gradient-overlay2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    background: linear-gradient(to left, rgb(1, 4, 17) 37%, rgba(3, 13, 49, 0) 55%);
+    z-index: 1;
 }
 
 .me img{    
@@ -132,6 +150,7 @@ header a:hover{
     flex-direction: column;/*換行*/
     align-items: center;/*水平至中*/
     justify-content: center;/*高度至中*/
+    z-index: 2;
 }
 
 .info h2{

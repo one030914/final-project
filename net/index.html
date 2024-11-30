@@ -24,13 +24,16 @@
         <section class="title">
             <div class="gradient-overlay">
                 <h2 id="text">自我介紹</h2>
-                <!-- <img src="image/IMG_1989.png" id="logo" alt="logo"> -->
             </div>
+            <video controls class="mp4" id="myVideo">
+                <source src="mp4/灰塵.mp4" alt="灰塵.mp4">
+                Your browser does not support the video tag.
+            </video>
         </section>
        
         <section class="me">
             <img src="image/我.jpg" alt="我">
-
+            <div class="gradient-overlay2"></div>
             <div class="info">
             <h2>自我介紹</h2> 
             <p>我是一個大學生！平時喜歡畫畫跟玩遊戲，這是我的作品集，我將用它紀錄關於我的設計！</p>
@@ -79,16 +82,16 @@
     <footer>
         <button id="backToTop" class="back-to-top">back to top ↑</button>
     </footer>
-    <script>
-        // let logo =document.getElementById('logo');
+    <!-- <script>
+        let logo =document.getElementById('logo');
         let text =document.getElementById('text');
 
         window.addEventListener('scroll',function(){
             let value = window.scrollY;
-            // logo.style.top = value * 0.25 + 'px';
+            logo.style.top = value * 0.25 + 'px';
             text.style.top = value * 0.25 + 'px';
         });
-    </script>
+    </script> -->
     <script type="text/Javascript" src="example.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>

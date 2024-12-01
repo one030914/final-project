@@ -102,26 +102,43 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "none"                    // 使用平滑的过渡
     });
 
+/////////////////////////////////////////////////////////////////////影片動畫////////////////////////////////////////////////////////////////////////////////////////////
+
     gsap.registerPlugin(ScrollTrigger);
     // 确保视频初始时没有声音
+    video.muted = false; // 用户交互后取消静音
+
+    // 确保视频在页面加载时重置为初始状态
+    window.addEventListener("load", () => {
+        video.currentTime = 0; // 视频从头开始
+        video.pause();         // 初始暂停状态
+        
+    });
     video.muted = true;  // 静音视频，确保可以自动播放
     ScrollTrigger.create({
-            trigger: ".title",   // 当 `.title` 区域触发时开始
-            start: "top 5%",    // 从页面顶部开始
-            end: "top 350px",       // 滚动到下一个画面时结束动画
+            trigger: ".w",   // 当 `.title` 区域触发时开始
+            start: "top 20%",            // 视频到达页面顶部 10% 时开始
+            end: "bottom bottom",           // 视频播放持续到页面底部 90%
             scrub: true,         // 平滑滚动时同步动画
-            markers: false ,
+            markers: true ,
             onEnter: () => {
-                if (video.paused) {
-            
-                    video.play();  // 进入页面时播放视频
+                if (video.readyState >= 3 && video.paused) { // 确保视频准备就绪
+                    video.play();
                 }
             },
             onLeave: () => {
-                video.pause();    // 离开页面时暂停视频
+                if (!video.paused) {
+            video.pause(); // 仅在播放时暂停
+        }
             },
             onLeaveBack: () => {
                 video.pause();    // 离开页面时暂停视频
+            }
+        });
+        
+        document.addEventListener("scroll", () => {
+            if (video.paused && video.readyState >= 3) {
+                video.play();
             }
         });
 
@@ -129,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ScrollTrigger.create({
             trigger: ".title",   // 再次使用 `.title` 区域作为触发器
             start: "top 5%",     // 当滚动到页面的 5% 位置时触发
-            end: "bottom 80%",
+            end: "bottom 30%",
             markers: false ,
             onEnterBack: () => {
                 video.currentTime = 0;
@@ -144,6 +161,13 @@ document.addEventListener("DOMContentLoaded", function () {
             video.pause();  // 初始状态为暂停
         });
 
+         // 确保视频加载完成后初始化
+         video.addEventListener("loadeddata", () => {
+            video.currentTime = 0; // 确保视频从头开始
+            video.pause();         // 初始状态为暂停
+            
+        });
+
         // 在视频加载时隐藏控制器
         video.removeAttribute("controls");
 
@@ -151,37 +175,109 @@ document.addEventListener("DOMContentLoaded", function () {
             // 在视频播放结束后隐藏控制器
             videoElement.controls = false;  // 隐藏控制器
         });
+       
         
+        
+/*
+        var tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".me",  // 监听 `.me` 元素的滚动
+                start: "top top",  // 当 `.me` 顶部到达视口的 10% 时开始
+                end: "bottom 30%", // 当 `.me` 底部到达视口的 30% 时结束
+                scrub: true,       // 平滑滚动
+                markers: true      // 显示调试标记
+            }
+        });
+        
+        // 定义动画步骤
+        tl.to(".me img", {
+            y: 0,          // 元素回到原位
+            opacity: 1,    // 元素完全显示
+            duration: 0.3    // 动画时长
+        }).to(".info", {
+            y: 0,          // 元素回到原位
+            opacity: 1,    // 元素完全显示
+            duration: 0.3    // 动画时长
+        });
+        */
+
+/////////////////////////////////////////////////////////////////////me////////////////////////////////////////////////////////////////////////////////////////////
+
+        gsap.to(".me", {
+            scrollTrigger: {
+                trigger: ".me", // 触发动画的元素
+                start: "top top",  // 起始位置：元素顶部与视口顶部对齐时
+                end: "+=250%",     // 滚动到多长时间后结束
+                pin: true,         // 固定第一个画面
+                pinSpacing: true,  // 保留滚动占位，确保第二个画面不过早上移
+                scrub: true ,       // 滚动时动画会同步滚动
+                markers: false,
+            }
+        });
+
         gsap.fromTo(".me img", {
             y: 100, // 初始位置在 100px 下方
             opacity: 0
         }, {
             y: 0, // 滚动到元素时回到原位
             opacity: 1,
+            
             scrollTrigger: {
                 trigger: ".me",  // 监听 `.me` 元素的滚动
-                start: "top 10%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                start: "top top",  // 当 `.me` 顶部到达视口 80% 位置时开始
                 end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
                 scrub: true,       // 平滑滚动
-                markers: true      // 可选，显示标记以调试
+                markers:false     // 可选，显示标记以调试
             }
         });
-        
-        gsap.fromTo(".me .info", {
+       
+        gsap.fromTo(".info", {
             y: 100, // 初始位置在 100px 下方
             opacity: 0
         }, {
             y: 0, // 滚动到元素时回到原位
             opacity: 1,
+            
             scrollTrigger: {
                 trigger: ".me",  // 监听 `.me` 元素的滚动
-                start: "top 80%",  // 当 `.me` 顶部到达视口 80% 位置时开始
-                end: "top 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                start: "top top",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
                 scrub: true,       // 平滑滚动
-                markers:false      // 可选，显示标记以调试
+                markers:false     // 可选，显示标记以调试
             }
         });
 
+        gsap.fromTo(".me img", {
+            y: 0, // 初始位置在 100px 下方
+            opacity: 1
+        }, {
+            y: -100, // 滚动到元素时回到原位
+            opacity: 0,
+            
+            scrollTrigger: {
+                trigger: ".me ",  
+                start: "bottom 90%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 1%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false     // 可选，显示标记以调试
+            }
+        });
+
+        gsap.fromTo(".info", {
+            y: 0, // 初始位置在 100px 下方
+            opacity: 1
+        }, {
+            y: -100, // 滚动到元素时回到原位
+            opacity: 0,
+            
+            scrollTrigger: {
+                trigger: ".me ",  
+                start: "bottom 90%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 1%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false     // 可选，显示标记以调试
+            }
+        });
         
     }
 );

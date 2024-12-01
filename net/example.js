@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
             end: "+=350%",     // 滚动到多长时间后结束
             pin: true,         // 固定第一个画面
             pinSpacing: true,  // 保留滚动占位，确保第二个画面不过早上移
-            scrub: true        // 滚动时动画会同步滚动
+            scrub: true ,       // 滚动时动画会同步滚动
+            markers: false,
         }
     });
   
@@ -62,9 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
             trigger: ".title",  // 触发动画的元素
             start: "1px",   // 动画在滚动到 .title 的 20% 位置时开始
-            end: "top -100%",    // 动画在滚动到 .title 的 -20% 位置时结束
+            end: "top 100%",    // 动画在滚动到 .title 的 -20% 位置时结束
             scrub: true,         // 平滑滚动动画
-            toggleActions: "play reverse play reverse" // 动画在滚动时播放和反向播放
+            toggleActions: "play reverse play reverse", // 动画在滚动时播放和反向播放
+            markers: false,
         },
         scale: 2,             // 放大两倍
         opacity: 0,           // 渐渐消失
@@ -77,7 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
             start: "top 1%",   // 动画在滚动到 .title 的 20% 位置时开始
             end: "top -100%",    // 动画在滚动到 .title 的 -20% 位置时结束
             scrub: true,         // 平滑滚动动画
-            toggleActions: "play reverse play reverse" // 动画在滚动时播放和反向播放
+            toggleActions: "play reverse play reverse", // 动画在滚动时播放和反向播放
+            markers: false,
         },
         scale: 2,             // 放大两倍
         opacity: 0,           // 渐渐消失
@@ -93,21 +96,24 @@ document.addEventListener("DOMContentLoaded", function () {
             start: "+=20%",           // 当滚动到内容区的 80% 位置时开始模糊
             end: "bottom 60%",          // 滚动到内容区的 20% 时结束模糊
             scrub: true,                // 平滑同步滚动
-           /* markers: true */              // 可选: 添加标记用于调试
+            markers: false ,             // 可选: 添加标记用于调试
         },
         filter: "blur(5px)",            // 设置模糊效果，5px 是模糊的强度
         ease: "none"                    // 使用平滑的过渡
     });
 
     gsap.registerPlugin(ScrollTrigger);
+    // 确保视频初始时没有声音
+    video.muted = true;  // 静音视频，确保可以自动播放
     ScrollTrigger.create({
             trigger: ".title",   // 当 `.title` 区域触发时开始
-            start: "top top",    // 从页面顶部开始
-            end: "+=350%",       // 滚动到下一个画面时结束动画
+            start: "top 5%",    // 从页面顶部开始
+            end: "top 350px",       // 滚动到下一个画面时结束动画
             scrub: true,         // 平滑滚动时同步动画
-            markers: true,
+            markers: false ,
             onEnter: () => {
                 if (video.paused) {
+            
                     video.play();  // 进入页面时播放视频
                 }
             },
@@ -122,18 +128,20 @@ document.addEventListener("DOMContentLoaded", function () {
         // 监听滚动事件，确保在返回页面时播放视频
         ScrollTrigger.create({
             trigger: ".title",   // 再次使用 `.title` 区域作为触发器
-            start: "top 1%",     // 当滚动到页面的 5% 位置时触发
+            start: "top 5%",     // 当滚动到页面的 5% 位置时触发
+            end: "bottom 80%",
+            markers: false ,
             onEnterBack: () => {
                 video.currentTime = 0;
                 video.play();  // 在回到 5% 位置时重新播放视频
             }
         });
 
-        // 确保视频加载完成后初始化
-        video.addEventListener("loadeddata", () => {
-            video.currentTime = 0; // 确保视频从头开始
-            video.pause();         // 初始状态为暂停
-            initScrollTrigger();   // 初始化 ScrollTrigger
+        // 监听视频加载事件，确保视频加载后可以播放
+        video.addEventListener("canplay", () => {
+            // 确保视频从头开始，并且处于暂停状态
+            video.currentTime = 0;
+            video.pause();  // 初始状态为暂停
         });
 
         // 在视频加载时隐藏控制器
@@ -143,19 +151,34 @@ document.addEventListener("DOMContentLoaded", function () {
             // 在视频播放结束后隐藏控制器
             videoElement.controls = false;  // 隐藏控制器
         });
-
-        // 页面加载完成后，确保触发器刷新
-        window.addEventListener("load", () => {
-            if (video.readyState >= 3) { // 确保视频已加载
-                video.currentTime = 0;
-                video.pause();
-                initScrollTrigger(); // 初始化触发器
-            } else {
-                video.addEventListener("canplay", () => {
-                    video.currentTime = 0;
-                    video.pause();
-                    initScrollTrigger(); // 初始化触发器
-                });
+        
+        gsap.fromTo(".me img", {
+            y: 100, // 初始位置在 100px 下方
+            opacity: 0
+        }, {
+            y: 0, // 滚动到元素时回到原位
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".me",  // 监听 `.me` 元素的滚动
+                start: "top 10%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers: true      // 可选，显示标记以调试
+            }
+        });
+        
+        gsap.fromTo(".me .info", {
+            y: 100, // 初始位置在 100px 下方
+            opacity: 0
+        }, {
+            y: 0, // 滚动到元素时回到原位
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".me",  // 监听 `.me` 元素的滚动
+                start: "top 80%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "top 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false      // 可选，显示标记以调试
             }
         });
 

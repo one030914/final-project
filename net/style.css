@@ -110,11 +110,14 @@ header a:hover{
 
 .title h2{
     position: relative; 
-    font-size: 60px;
+    font-size: 80px;
     line-height: 100vh;  
     text-align: center;
     z-index: 2;
+    -webkit-text-stroke: 2px black; /* 描边宽度和颜色 */
+    text-stroke: 2px black; /* 兼容其他支持的浏览器 */
 }
+
 
 .me{
     position: relative;

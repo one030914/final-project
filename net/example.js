@@ -47,6 +47,51 @@ document.addEventListener("DOMContentLoaded", function () {
             behavior: "smooth", // 平滑滚动
         });
     });
+
+/////////////////////////////////////////////////////////////////////head////////////////////////////////////////////////////////////////////////////////////////////
+    
+    gsap.to("header", {
+        scrollTrigger: {
+            trigger: ".title", 
+            start: "+=350%",  
+            end: "bottom bottom",              
+            scrub: 1.5 ,       
+            markers: false
+        },
+
+        yPercent: -20,
+        duration: 4
+    });
+
+    gsap.to("h1", {
+        scrollTrigger: {
+            trigger: ".title", 
+            start: "+=350%",  
+            end: "bottom bottom",              
+            scrub: 1.5 ,       
+            markers: false
+        },
+
+        yPercent: 10,
+        duration: 4
+    });
+
+    gsap.to("header ul", {
+        scrollTrigger: {
+            trigger: ".title", 
+            start: "+=350%",  
+            end: "bottom bottom",               
+            scrub: 1.5 ,       
+            markers: false
+        },
+
+        yPercent: 10,
+        duration: 4
+    });
+
+/////////////////////////////////////////////////////////////////////title////////////////////////////////////////////////////////////////////////////////////////////
+
+
     gsap.to(".title", {
         scrollTrigger: {
             trigger: ".title", // 触发动画的元素
@@ -120,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
             start: "top 20%",            // 视频到达页面顶部 10% 时开始
             end: "bottom bottom",           // 视频播放持续到页面底部 90%
             scrub: true,         // 平滑滚动时同步动画
-            markers: true ,
+            markers: false,
             onEnter: () => {
                 if (video.readyState >= 3 && video.paused) { // 确保视频准备就绪
                     video.play();
@@ -203,6 +248,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /////////////////////////////////////////////////////////////////////me////////////////////////////////////////////////////////////////////////////////////////////
 
+        gsap.fromTo(".me ", {
+            y: 100, // 初始位置在 100px 下方
+            opacity: 0
+        }, {
+            y: 0, // 滚动到元素时回到原位
+            opacity: 1,
+            
+            scrollTrigger: {
+                trigger: ".me",  // 监听 `.me` 元素的滚动
+                start: "top top",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false     // 可选，显示标记以调试
+            }
+        });
+
         gsap.to(".me", {
             scrollTrigger: {
                 trigger: ".me", // 触发动画的元素
@@ -211,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pin: true,         // 固定第一个画面
                 pinSpacing: true,  // 保留滚动占位，确保第二个画面不过早上移
                 scrub: true ,       // 滚动时动画会同步滚动
-                markers: false,
+                markers: true,
             }
         });
 
@@ -221,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             y: 0, // 滚动到元素时回到原位
             opacity: 1,
+            duration: 0.3,
             
             scrollTrigger: {
                 trigger: ".me",  // 监听 `.me` 元素的滚动
@@ -237,6 +299,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             y: 0, // 滚动到元素时回到原位
             opacity: 1,
+            duration: 0.3,
+            
+            scrollTrigger: {
+                trigger: ".me",  // 监听 `.me` 元素的滚动
+                start: "top top",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false     // 可选，显示标记以调试
+            }
+        });
+
+        gsap.fromTo(".gradient-overlay2", {
+            y: 100, // 初始位置在 100px 下方
+            opacity: 0
+        }, {
+            y: 0, // 滚动到元素时回到原位
+            opacity: 1,
+            duration: 0.3,
             
             scrollTrigger: {
                 trigger: ".me",  // 监听 `.me` 元素的滚动
@@ -278,6 +358,76 @@ document.addEventListener("DOMContentLoaded", function () {
                 markers:false     // 可选，显示标记以调试
             }
         });
+
+        gsap.fromTo(".gradient-overlay2", {
+            y: 0, // 初始位置在 100px 下方
+            opacity: 1
+        }, {
+            y: -100, // 滚动到元素时回到原位
+            opacity: 0,
+            
+            scrollTrigger: {
+                trigger: ".me ",  
+                start: "bottom 90%",  // 当 `.me` 顶部到达视口 80% 位置时开始
+                end: "bottom 1%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                scrub: true,       // 平滑滚动
+                markers:false     // 可选，显示标记以调试
+            }
+        });
+
+/////////////////////////////////////////////////////////////////////social////////////////////////////////////////////////////////////////////////////////////////////
+     
+        gsap.fromTo(".blur-overlay", {
+            y: 100, 
+            opacity: 0
+        }, {
+            y: 0, 
+            opacity: 1,
+            duration: 0.8,
+            
+            scrollTrigger: {
+                trigger: ".social", 
+                start: "top 70%",  
+                end: "bottom bottom",   
+                scrub: true,       
+                markers:false    
+            }
+        });
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".social",      
+                start: "top 70%",        
+                end: "bottom bottom",       
+                scrub: true,              
+                markers: false           
+            }
+        })
+        .fromTo(".blur-color", {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8
+        })
+        .fromTo(".h2", {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 4
+        })
+        .fromTo(".content", {
+            y: 100,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 4
+        });
+        
         
     }
 );

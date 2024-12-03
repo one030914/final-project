@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll(".box-img");// 获取所有图片
     const prevButton = document.querySelector(".box-left");// 左按钮
     const nextButton = document.querySelector(".box-right");// 右按钮
-    const video = document.querySelector(".mp4");
-    const videoElement = document.getElementById("myVideo");
+    const video = document.getElementById(".mp4");
+    
+    
     let index = 0;// 当前图片索引
 
     // 显示指定索引的图片
@@ -149,118 +150,81 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /////////////////////////////////////////////////////////////////////影片動畫////////////////////////////////////////////////////////////////////////////////////////////
 
-    gsap.registerPlugin(ScrollTrigger);
-    // 确保视频初始时没有声音
-    video.muted = false; // 用户交互后取消静音
+        gsap.registerPlugin(ScrollTrigger);
 
-    // 确保视频在页面加载时重置为初始状态
-    window.addEventListener("load", () => {
-        video.currentTime = 0; // 视频从头开始
-        video.pause();         // 初始暂停状态
-        
-    });
-    video.muted = true;  // 静音视频，确保可以自动播放
-    ScrollTrigger.create({
-            trigger: ".w",   // 当 `.title` 区域触发时开始
-            start: "top 20%",            // 视频到达页面顶部 10% 时开始
-            end: "bottom bottom",           // 视频播放持续到页面底部 90%
-            scrub: true,         // 平滑滚动时同步动画
+     
+        window.addEventListener("load", () => {
+            video.muted = true; // 确保静音，符合 Chrome 自动播放策略
+            video.currentTime = 0; // 视频从头开始
+            video.pause(); // 确保初始状态暂停
+        });
+
+        // 初始化 ScrollTrigger
+        ScrollTrigger.create({
+            trigger: ".w", // 当 `.w` 元素进入视口时触发
+            start: "top 1%",
+            end: "bottom bottom",
+            scrub: true,
             markers: false,
             onEnter: () => {
-                if (video.readyState >= 3 && video.paused) { // 确保视频准备就绪
-                    video.play();
+                if (video.readyState >= 3) {
+                    video.play().catch((error) => {
+                        console.error("Video play was interrupted:", error);
+                    });
                 }
             },
             onLeave: () => {
-                if (!video.paused) {
-            video.pause(); // 仅在播放时暂停
-        }
+                video.pause();
             },
             onLeaveBack: () => {
-                video.pause();    // 离开页面时暂停视频
-            }
-        });
-        
-        document.addEventListener("scroll", () => {
-            if (video.paused && video.readyState >= 3) {
-                video.play();
-            }
+                video.pause();
+            },
         });
 
-        // 监听滚动事件，确保在返回页面时播放视频
-        ScrollTrigger.create({
-            trigger: ".title",   // 再次使用 `.title` 区域作为触发器
+         // 监听滚动事件，确保在返回页面时播放视频
+         ScrollTrigger.create({
+            trigger: ".w",   // 再次使用 .title 区域作为触发器
             start: "top 5%",     // 当滚动到页面的 5% 位置时触发
-            end: "bottom 30%",
-            markers: false ,
+            end: "bottom bottom",
+            markers: true ,
             onEnterBack: () => {
-                video.currentTime = 0;
-                video.play();  // 在回到 5% 位置时重新播放视频
+                if (video.readyState >= 3) {
+                    video.play().catch((error) => {
+                        console.error("Video play was interrupted:", error);
+                    });
+                }
             }
         });
 
-        // 监听视频加载事件，确保视频加载后可以播放
+        // 确保视频加载完成后，可以播放
         video.addEventListener("canplay", () => {
-            // 确保视频从头开始，并且处于暂停状态
             video.currentTime = 0;
-            video.pause();  // 初始状态为暂停
-        });
-
-         // 确保视频加载完成后初始化
-         video.addEventListener("loadeddata", () => {
-            video.currentTime = 0; // 确保视频从头开始
-            video.pause();         // 初始状态为暂停
-            
+            video.pause();
         });
 
         // 在视频加载时隐藏控制器
         video.removeAttribute("controls");
 
-        videoElement.addEventListener("ended", function () {
-            // 在视频播放结束后隐藏控制器
-            videoElement.controls = false;  // 隐藏控制器
+        // 避免未定义的 `videoElement` 报错
+        video.addEventListener("ended", () => {
+            video.controls = false; // 隐藏控制器
         });
-       
-        
-        
-/*
-        var tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".me",  // 监听 `.me` 元素的滚动
-                start: "top top",  // 当 `.me` 顶部到达视口的 10% 时开始
-                end: "bottom 30%", // 当 `.me` 底部到达视口的 30% 时结束
-                scrub: true,       // 平滑滚动
-                markers: true      // 显示调试标记
-            }
-        });
-        
-        // 定义动画步骤
-        tl.to(".me img", {
-            y: 0,          // 元素回到原位
-            opacity: 1,    // 元素完全显示
-            duration: 0.3    // 动画时长
-        }).to(".info", {
-            y: 0,          // 元素回到原位
-            opacity: 1,    // 元素完全显示
-            duration: 0.3    // 动画时长
-        });
-        */
 
 /////////////////////////////////////////////////////////////////////me////////////////////////////////////////////////////////////////////////////////////////////
 
         gsap.fromTo(".me ", {
-            y: 100, // 初始位置在 100px 下方
+           
             opacity: 0
         }, {
-            y: 0, // 滚动到元素时回到原位
+
             opacity: 1,
             
             scrollTrigger: {
                 trigger: ".me",  // 监听 `.me` 元素的滚动
                 start: "top top",  // 当 `.me` 顶部到达视口 80% 位置时开始
-                end: "bottom 30%",    // 当 `.me` 顶部到达视口 30% 位置时结束
+                end: "bottom 80%",    // 当 `.me` 顶部到达视口 30% 位置时结束
                 scrub: true,       // 平滑滚动
-                markers:false     // 可选，显示标记以调试
+                markers:false   // 可选，显示标记以调试
             }
         });
 
@@ -272,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pin: true,         // 固定第一个画面
                 pinSpacing: true,  // 保留滚动占位，确保第二个画面不过早上移
                 scrub: true ,       // 滚动时动画会同步滚动
-                markers: true,
+                markers: false,
             }
         });
 
@@ -383,13 +347,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             y: 0, 
             opacity: 1,
-            duration: 0.8,
+            duration: 5,
             
             scrollTrigger: {
                 trigger: ".social", 
                 start: "top 70%",  
                 end: "bottom bottom",   
-                scrub: true,       
+                scrub: 3,       
                 markers:false    
             }
         });
@@ -399,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 trigger: ".social",      
                 start: "top 70%",        
                 end: "bottom bottom",       
-                scrub: true,              
+                scrub: 5,              
                 markers: false           
             }
         })
@@ -417,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             y: 0,
             opacity: 1,
-            duration: 4
+            duration: 0.8
         })
         .fromTo(".content", {
             y: 100,
@@ -425,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, {
             y: 0,
             opacity: 1,
-            duration: 4
+            duration: 0.8
         });
         
         

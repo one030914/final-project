@@ -82,7 +82,6 @@ header a:hover{
     text-decoration: none;
     color: white;
     
-    
 }
 
 #menu {
@@ -189,18 +188,19 @@ header a:hover{
 }
 
 .gradient-overlay2{
+    transform: translateY(100px); /* 初始位置在下方 */
+    opacity: 0;              
     position: absolute;
-    top: 0;
     left: 0;
     width: 80%;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(to left, rgb(1, 4, 17) 37%, rgba(3, 13, 49, 0) 55%);
     z-index: 1;
 }
 
 .me img{    
-    transform: translateY(100px); /* 初始位置在下方 */
-    opacity: 0;                   /* 初始不可见 */
+    transform: translateY(100px); 
+    opacity: 0;              /* 初始不可见 */
     position: relative;
     width: 50%;
     height: 100%; /* 高和寬都填滿容器 */
@@ -210,8 +210,8 @@ header a:hover{
 }
 
 .info{
-    transform: translateY(100px); /* 初始位置在下方 */
-    opacity: 0;  
+    transform: translateY(100px); 
+    opacity: 0;   
     width: 50%;
     background-color: black;
     color: aliceblue;

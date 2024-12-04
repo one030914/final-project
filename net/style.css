@@ -65,6 +65,55 @@ header a:hover{
     text-decoration: underline;
 }
 
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    height: 0; /* 初始隐藏 */
+    opacity: 0;
+    background: #333;
+    color: white;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.menu li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    
+    
+}
+
+#menu {
+    overflow: hidden; /* 避免动画时内容溢出 */
+    transform-origin: top; /* 确保动画从顶部开始 */
+    height: 0; /* 初始状态为收起 */
+    opacity: 0; /* 初始状态为透明 */
+}
+
+#menu li {
+    text-align: left; /* 将文本对齐方式设置为左对齐 */
+    margin-left: 2rem; /* 與右邊留出距離 */
+    padding: 0;
+}
+
+/* 下拉按鈕初始隱藏 */
+#menuToggle {
+    display: none;
+    margin-left: auto; /* 將按鈕推到最右 */
+    margin-right: 2rem; /* 與右邊留出距離 */
+    line-height: 100px; 
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    
+}
+
+
+
 /*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
 
 .title{
@@ -389,4 +438,42 @@ header a:hover{
 
 .back-to-top:hover {
     background-color: #bfbfbf;
+}
+
+/*///////////////////////////////////////////////////////////////////////media///////////////////////////////////////////////////////////////////////////////////////*/
+
+@media (max-width: 450px) {
+
+    header {
+        position: relative;
+    }
+
+    #menuToggle {
+        display: block; /* 顯示按鈕 */
+    }
+
+    header ul {
+        display: none; /* 初始隱藏 */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #444;
+        flex-direction: column; /* 改為垂直顯示 */
+        gap: 0;
+        width: 100%; /* 滿寬 */
+        text-align: right;
+    }
+
+    header ul li {
+        padding: 0.5rem;
+    }
+
+    header ul li a {
+        display: block;
+    }
+
+    /* 顯示選單時 */
+    header ul.show {
+        display: flex;
+    }
 }

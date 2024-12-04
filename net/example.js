@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const prevButton = document.querySelector(".box-left");// 左按钮
     const nextButton = document.querySelector(".box-right");// 右按钮
     const video = document.getElementById(".mp4");
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
     
     
     let index = 0;// 当前图片索引
@@ -88,6 +90,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
         yPercent: 10,
         duration: 4
+    });
+
+     // 綁定點擊事件
+    let isOpen = false;
+
+    gsap.set(menu, { height: 0, opacity: 0 });
+
+    menuToggle.addEventListener("click", () => {
+
+        menu.classList.toggle("show");
+        if (isOpen) {
+            gsap.to(menu, { 
+                height: 0, 
+                opacity: 0, 
+                y: -20,  // 添加向上的动画
+                duration: 0.3, 
+                ease: "power1.out" 
+            });
+        } else {
+            gsap.fromTo(menu, 
+                { height: 0, opacity: 0, y: -20 }, // 初始位置稍微向上
+                { 
+                    height: "auto", 
+                    opacity: 1, 
+                    y: 0, // 回到原位
+                    duration: 0.3, 
+                    ease: "power1.in" 
+                }
+            );
+        }
+        isOpen = !isOpen;
     });
 
 /////////////////////////////////////////////////////////////////////title////////////////////////////////////////////////////////////////////////////////////////////

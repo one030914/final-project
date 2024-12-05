@@ -42,10 +42,16 @@ h2{
 
 }
 
+
 header ul{  
+    
     position: relative;
     line-height: 100px;
-    text-align: center;  
+    text-align: center; 
+    width: 80%;
+    margin-left: auto; /* 將按鈕推到最右 */
+    margin-left: 12rem; /* 與右邊留出距離 */
+
 }
 
 header li{
@@ -65,36 +71,8 @@ header a:hover{
     text-decoration: underline;
 }
 
-.menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    height: 0; /* 初始隐藏 */
-    opacity: 0;
-    background: #333;
-    color: white;
-    transition: height 0.3s ease, opacity 0.3s ease;
-}
-
-.menu li a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    
-}
-
-#menu {
-    overflow: hidden; /* 避免动画时内容溢出 */
-    transform-origin: top; /* 确保动画从顶部开始 */
-    height: 0; /* 初始状态为收起 */
-    opacity: 0; /* 初始状态为透明 */
-}
-
-#menu li {
-    text-align: left; /* 将文本对齐方式设置为左对齐 */
-    margin-left: 2rem; /* 與右邊留出距離 */
-    padding: 0;
+header ul.show {
+    display: flex;
 }
 
 /* 下拉按鈕初始隱藏 */
@@ -111,7 +89,9 @@ header a:hover{
     
 }
 
-
+.menu{
+    display: none;
+}
 
 /*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -446,6 +426,11 @@ header a:hover{
 
     header {
         position: relative;
+ 
+    }
+
+    .menu{
+        display: none;
     }
 
     #menuToggle {

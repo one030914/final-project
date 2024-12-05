@@ -1,4 +1,4 @@
-*{
+    *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -420,24 +420,24 @@ header ul.show {
     background-color: #bfbfbf;
 }
 
-/*///////////////////////////////////////////////////////////////////////media///////////////////////////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////////media header///////////////////////////////////////////////////////////////////////////////////////*/
 
 @media (max-width: 450px) {
 
     header {
-        position: relative;
- 
+        position: fixed; 
+        backdrop-filter: blur(10px);
+        height: 70px;
     }
 
-    .menu{
-        display: none;
-    }
 
     #menuToggle {
         display: block; /* 顯示按鈕 */
+        line-height: 70px;
     }
 
     header ul {
+        position: fixed; 
         display: none; /* 初始隱藏 */
         position: absolute;
         top: 100%;
@@ -447,18 +447,236 @@ header ul.show {
         gap: 0;
         width: 100%; /* 滿寬 */
         text-align: right;
+
+    }
+
+    h1{
+        line-height: 70px;
+        font-size: 20px;
     }
 
     header ul li {
-        padding: 0.5rem;
+        padding: 0.5rem;       
     }
 
     header ul li a {
         display: block;
+        line-height: 50px;
+        
     }
 
     /* 顯示選單時 */
     header ul.show {
         display: flex;
+        
     }
+}
+
+/*///////////////////////////////////////////////////////////////////////media me///////////////////////////////////////////////////////////////////////////////////////*/
+
+@media (max-width: 450px) {
+    .me{
+        position: relative;
+        height: 800px;
+        display: flex; 
+        flex-direction: column;
+        z-index: 7;   
+    }
+    
+    .gradient-overlay2{
+        display: none;
+    }
+    
+    .me img{    
+        transform: translateY(100px); 
+        opacity: 0; /* 初始不可见 */
+        position: relative;
+        width: 100%;
+        height: 60%; /* 高和寬都填滿容器 */
+        object-fit: cover; /* 和background-image設定background-size: cover一樣，圖片剛好填滿 */
+        object-position: center;
+        
+    }
+    
+    .info{
+        transform: translateY(100px); 
+        opacity: 0;   
+        width: 100%;
+        background-color: black;
+        color: aliceblue;
+        display: flex;
+        flex-direction: column;/*換行*/
+        align-items: center;/*水平至中*/
+        justify-content: center;/*高度至中*/
+        z-index: 2;
+    }
+    
+    .info h2{
+        margin-top: 20px;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .info p{
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+        line-height: 2em;/*字體大小*/
+    }
+}
+
+/*///////////////////////////////////////////////////////////////////////media work///////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media (max-width: 450px) {
+
+    .work{
+        position: relative;
+        height: 580px;
+    
+    }
+    
+    .work h2{
+        margin-top: 80px; 
+        margin-bottom: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .box{
+        position: relative;
+        display: flex;
+        height: 450px;
+        margin-bottom: 50px;
+        width: 100%;
+        justify-content: center; /* 图片居中 */
+        align-items: center;
+        object-fit: cover;
+    }
+    
+    .box-left{
+        position: absolute;
+        transform: translateY(-7%);
+        background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
+        left: 0;
+        width: 13vw;
+        height:  600px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 600px;
+        font-size: 30px;
+        font-weight: bold;
+        z-index: 10; /* 确保按钮在图片之上 */
+        -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
+
+    }
+    
+    .box-right{
+        position: absolute;
+        transform: translateY(-7%);
+        background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
+        right: 0;
+        width: 13vw;
+        height: 600px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 600px;
+        font-size: 30px;
+        font-weight: bold;
+        z-index: 10; /* 确保按钮在图片之上 */
+        -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
+    }
+    
+    
+    
+    .box-img{
+        display: none; /* 默认隐藏所有图片 */
+        position: relative;
+        width: 100%;
+        height: 650px;
+        opacity: 0; /* 默认不可见 */
+        transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
+        margin: 0;
+    }
+    
+    .box-img.active{
+        display: block; /* 显示当前图片 */
+        opacity: 1;
+    }
+    
+    
+    .box-img img{    
+        width: 100%;
+        height: 600px;;
+        object-fit: contain;
+        object-position: center;
+    
+    }
+    
+    .box-zhiding{
+        display: none;
+    }
+    
+    
+
+}
+
+/*///////////////////////////////////////////////////////////////////////media social///////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media (max-width: 450px) {
+
+    .social{
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 600px;
+        text-align: center;
+        overflow: hidden;
+        align-items: center;
+    }
+    
+    .blur-overlay {
+        position: absolute;
+        width: 100%;
+        height: 600px;
+        background-image: url(image/兵長賀圖.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px); /* 模糊 */
+    }
+    
+    .blur-color{
+        position: absolute;
+        width: 100%;
+        height: 600px;
+         background-color: rgba(0, 0, 0, 0.592); /* 半透明黑色叠加 */
+         z-index: 1;
+    }
+    
+    .social h2{ 
+        position: relative; /* 保证文字在模糊层之上 */
+        z-index: 2; /* 让文字不被背景遮盖 */
+        margin-top: 30px; 
+        margin-bottom: 10px;
+        font-size: 40px;
+    }
+    
+    .content{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        top: 40px;
+    }
+    
+    .content li{
+        display: none;
+    }
+
+    .fb{
+        height: 200px;
+    }
+    
 }

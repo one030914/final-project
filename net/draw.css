@@ -69,6 +69,37 @@ header a:hover{
     text-decoration: underline;
 }
 
+/*///////////////////////////////////////////////////////////////////////bottom///////////////////////////////////////////////////////////////////////////////////////*/
+
+footer{
+    display: flex;
+    background-color:  #292929;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top {
+    position: relative;
+    display: flex;
+    padding: 15px 30px;
+    background-color: #525252; /* 按钮背景色 */
+    color: #fff;     /* 按钮文字颜色 */
+    border: none; 
+    border-radius: 15px; /* 圆形按钮 */
+    cursor: pointer; 
+    font-size: 16px; 
+    align-items: center;
+}
+
+.back-to-top:hover {
+    background-color: #bfbfbf;
+}
+
+/*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
+
+
 .title{
     background-image: url(image/兵長賀圖.jpg);
     background-repeat: no-repeat;
@@ -107,6 +138,9 @@ header a:hover{
     background: radial-gradient(circle, rgba(3, 13, 49, 0) 20%, rgb(1, 8, 30) 80%);/*%是代表漸層範圍*/
     z-index: 3;
 }
+
+/*///////////////////////////////////////////////////////////////////////work1///////////////////////////////////////////////////////////////////////////////////////*/
+
 
 .work1{
     position: relative;
@@ -168,28 +202,53 @@ header a:hover{
     border-radius: 15px;
 }
 
-footer{
-    display: flex;
-    background-color:  #292929;
+
+
+/*///////////////////////////////////////////////////////////////////////work2///////////////////////////////////////////////////////////////////////////////////////*/
+
+.work2 {
+    display: flex; /* 统一使用 flexbox 布局 */
+    flex-direction: row; /* 子元素按行排列，可根据需求改为 column */
+    justify-content: space-between; /* 控制子元素的对齐 */
+    align-items: center; /* 子元素垂直居中 */
+    position: relative; /* 确保正常参与文档流 */
+    height: 100vh;
     width: 100%;
-    height: 100px;
-    align-items: center;
-    justify-content: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 10vw; /* 增加左右内边距 */
 }
 
-.back-to-top {
-    position: relative;
+.text2 {
     display: flex;
-    padding: 15px 30px;
-    background-color: #525252; /* 按钮背景色 */
-    color: #fff;     /* 按钮文字颜色 */
-    border: none; 
-    border-radius: 15px; /* 圆形按钮 */
-    cursor: pointer; 
-    font-size: 16px; 
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%; /* 文本占宽度比例，可调整 */
+    z-index: 2; /* 确保内容显示在最上方 */
+    position: relative;
 }
 
-.back-to-top:hover {
-    background-color: #bfbfbf;
+.box2 {
+    flex: 1; /* 图片区域占剩余空间 */
+    max-width: 60%; /* 限制最大宽度 */
+    height: auto; /* 自适应高度 */
+    position: relative; /* 避免脱离父容器 */
+    z-index: 1;
+}
+
+.box2 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.gradient-overlay3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(1, 4, 17) 50%, rgba(3, 13, 49, 0) 70%);
+    z-index: 0; /* 放在最底层 */
 }

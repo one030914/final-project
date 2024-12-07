@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger);
 
     let index = 0;// 当前图片索引
-
+    let isPlaying = false;
+    
+    if (window.innerWidth > 0) {
     // 显示指定索引的图片
     function showImage(newIndex) {
         // 隐藏当前图片
@@ -94,37 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-    /////////////////////////////////////////////////////////////////////影片動畫////////////////////////////////////////////////////////////////////////////////////////////
-
-    // 初始化动画
-    initAnimations();
-
-    // 监听窗口调整大小事件，重新初始化动画
-    window.addEventListener("resize", () => {
-        // 在重新初始化前移除所有 ScrollTrigger
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        initAnimations();
-    });
-
-    // 确保视频加载完成后，可以播放
-    video.addEventListener("canplay", () => {
-        video.currentTime = 0;
-        video.pause();
-    });
-
-    // 在视频加载时隐藏控制器
-    video.removeAttribute("controls");
-
-    // 避免未定义的 `videoElement` 报错
-    video.addEventListener("ended", () => {
-        video.controls = false; // 隐藏控制器
-    });
-
-    window.addEventListener("load", () => {
-        video.muted = true; // 确保静音，符合 Chrome 自动播放策略
-        video.currentTime = 0; // 视频从头开始
-        video.pause(); // 确保初始状态暂停
-    });
+    
     /////////////////////////////////////////////////////////////////////head按鈕////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -400,25 +372,67 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 0.8
         });
 
+    /////////////////////////////////////////////////////////////////////影片動畫////////////////////////////////////////////////////////////////////////////////////////////
+
+// 初始化动画
+initAnimations();
+
+// 监听窗口调整大小事件，重新初始化动画
+window.addEventListener("resize", () => {
+    // 在重新初始化前移除所有 ScrollTrigger
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    initAnimations();
+});
+
+// 确保视频加载完成后，可以播放
+video.addEventListener("canplay", () => {
+    video.currentTime = 0;
+    video.pause();
+});
+
+// 在视频加载时隐藏控制器
+video.removeAttribute("controls");
+
+// 避免未定义的 `videoElement` 报错
+video.addEventListener("ended", () => {
+    video.controls = false; // 隐藏控制器
+});
+
+window.addEventListener("load", () => {
+    video.muted = true; // 确保静音，符合 Chrome 自动播放策略
+    video.currentTime = 0; // 视频从头开始
+    video.pause(); // 确保初始状态暂停
+});
+
 // 初始化 ScrollTrigger
 ScrollTrigger.create({
-    trigger: ".w", // 当 `.w` 元素进入视口时触发
+    trigger: ".w",
     start: "top 1%",
     end: "bottom bottom",
     scrub: true,
     markers: false,
     onEnter: () => {
-        if (video.readyState >= 1) {
-            video.play().catch((error) => {
-                console.error("Video play was interrupted:", error);
-            });
+        if (!isPlaying && video.readyState >= 1) { // 如果视频未播放且已准备好
+            video.play()
+                .then(() => {
+                    isPlaying = true; // 播放成功后标记状态
+                })
+                .catch((error) => {
+                    console.error("Video play was interrupted:", error);
+                });
         }
     },
     onLeave: () => {
-        video.pause();
+        if (isPlaying) { // 如果视频正在播放
+            video.pause();
+            isPlaying = false; // 更新状态
+        }
     },
     onLeaveBack: () => {
-        video.pause();
+        if (isPlaying) { // 如果视频正在播放
+            video.pause();
+            isPlaying = false; // 更新状态
+        }
     },
 });
 
@@ -429,16 +443,20 @@ ScrollTrigger.create({
     end: "bottom bottom",
     markers: false,
     onEnterBack: () => {
-        if (video.readyState >= 1) {
-            video.play().catch((error) => {
-                console.error("Video play was interrupted:", error);
-            });
+        if (!isPlaying && video.readyState >= 1) { // 如果视频未播放且已准备好
+            video.play()
+                .then(() => {
+                    isPlaying = true; // 播放成功后标记状态
+                })
+                .catch((error) => {
+                    console.error("Video play was interrupted:", error);
+                });
         }
     }
 });
 
 
-});
+}});
 
 
 

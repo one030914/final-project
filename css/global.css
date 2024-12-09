@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* headings */
+h1{
+    position: absolute;
+    color: aliceblue;
+    font-weight: bold;
+    line-height: 100px;
+    margin-left: 7vw;
+}
+
+h2{
+    color: aliceblue;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 100px;
+    color: aliceblue;
+}
+
+h4{
+    font-size: 30px;
+    color: aliceblue;
+}
+
+/* header */
+header nav{
+    position: fixed;
+    height: 100px;
+    width: 100vw;
+    font-size: 1.5rem;
+    background-color: #292929d2;
+    backdrop-filter: blur(10px); /* 模糊背景 */
+    z-index: 100; /*always on top layer*/
+    display: flex;
+    flex-direction: row;
+}
+
+header ul{
+    line-height: 100px;
+    text-align: center; 
+    width: 80%;
+    margin: 0 auto; /*水平置中*/
+}
+
+header li{
+    display: inline; /*橫式排列*/
+    margin-right: 2vw; /*vw是整體視窗寬度的百分比，會依據縮放自動變化*/
+}
+
+header a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: rgb(202, 201, 141);
+}
+
+h1 a:hover{
+    color: aliceblue;
+}
+
+/* main */
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #0d0d0d;
+}
+
+/* title */
+.title{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+.title h2{
+    position: relative; 
+    font-size: 80px;
+    line-height: 100vh;  
+    text-align: center;
+    color: aliceblue;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black; /* 描边宽度和颜色 */
+}
+
+.gradient-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.464);
+    background: radial-gradient(circle, rgba(3, 13, 49, 0) 20%, rgb(1, 8, 30) 80%); /*%是代表漸層範圍*/
+}
+
+/*backToTop */
+#backToTop {
+    opacity: 0;
+    pointer-events: none; /* 禁止点击 */
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 15px 30px;
+    background-color: #525252; /* 按钮背景色 */
+    color: #fff;     /* 按钮文字颜色 */
+    border: none; 
+    border-radius: 15px; /* 圆形按钮 */
+    font-size: 16px; 
+    align-items: center;
+}
+
+#backToTop:hover {
+    background-color: #bfbfbf;
+}
+
+/* media */
+@media (max-width: 1200px){
+    ul {
+        display: none; /* 小螢幕預設隱藏 */
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    ul.show {
+        display: flex; /* 小螢幕點擊後顯示 */
+    }
+    .toggler-btn {
+        display: inline-block;
+    }
+}

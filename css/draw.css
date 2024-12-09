@@ -1,0 +1,83 @@
+/*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
+
+#img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*///////////////////////////////////////////////////////////////////////work///////////////////////////////////////////////////////////////////////////////////////*/
+
+.work{
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+}
+
+#right{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: row; /*橫向左到右*/
+    align-items: center;
+    .gradient-overlay2{
+        position: absolute;
+        width: 80%;
+        height: inherit;
+        background: linear-gradient(to right, rgb(1, 4, 17) 50%, rgba(3, 13, 49, 0) 70%);
+    }
+}
+
+#left{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: row-reverse; /*橫向右到左*/
+    align-items: center;
+    .gradient-overlay2{
+        position: absolute;
+        width: 80%;
+        height: inherit;
+        background: linear-gradient(to left, rgb(1, 4, 17) 50%, rgba(3, 13, 49, 0) 70%);
+    }
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: 100vh;
+    width: 50%;
+    left: 10vw;
+    z-index: 1;
+}
+
+.text h3{
+    text-align: left;
+    font-size: 80px;
+    color: aliceblue;
+}
+
+.text h4{
+    font-size: 30px;
+    font-size: large;
+    color: aliceblue;
+}
+
+.box{
+    justify-content: center;
+    align-items: center;
+    right: 100px;
+    top: 70px;
+    width: 100vh;
+    height: 80%;
+}
+
+.box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}

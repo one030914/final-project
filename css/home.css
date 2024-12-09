@@ -1,93 +1,93 @@
-/*///////////////////////////////////////////////////////////////////////header///////////////////////////////////////////////////////////////////////////////////////*/
+/*///////////////////////////////////////////////////////////////////////menu///////////////////////////////////////////////////////////////////////////////////////*/
 
 /* 下拉按鈕初始隱藏 */
 #menuToggle {
     display: none;
     margin-left: auto; /* 將按鈕推到最右 */
     margin-right: 2rem; /* 與右邊留出距離 */
-    line-height: 100px; 
+    line-height: 100px;
     background: none;
     border: none;
     font-size: 1.5rem;
     color: white;
 }
 
-.menu{
+.menu {
     display: none;
 }
 
 /*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
 
-#mp4{
+#mp4 {
     height: 100%;
     width: 100%;
 }
 
 /*///////////////////////////////////////////////////////////////////////me///////////////////////////////////////////////////////////////////////////////////////*/
 
-.me{
+.me {
     position: relative;
     height: 800px;
     display: flex;
 }
 
-.gradient-overlay2{
-    transform: translateY(100px); /* 初始位置在下方 */
-    opacity: 0;              
+.gradient-overlay2 {
     position: absolute;
+    transform: translateY(100px); /* 初始位置在下方 */
+    opacity: 0;
     left: 0;
     width: 80%;
     height: inherit;
-    background: linear-gradient(to left, rgb(1, 4, 17) 37%, rgba(3, 13, 49, 0) 55%);
+    background: linear-gradient(
+        to left,
+        rgb(1, 4, 17) 37%,
+        rgba(3, 13, 49, 0) 55%
+    );
 }
 
-.me img{    
-    transform: translateY(100px); 
-    opacity: 0;              /* 初始不可见 */
-    position: relative;
+.me img {
+    transform: translateY(100px);
+    opacity: 0; /* 初始不可见 */
     width: 50%;
     height: inherit; /* 高和寬都填滿容器 */
     object-fit: cover; /* 和background-img設定background-size: cover一樣，圖片剛好填滿 */
     object-position: center;
-    
 }
 
-.info{
-    transform: translateY(100px); 
-    opacity: 0;   
+.info {
+    display: flex;
+    transform: translateY(100px);
+    opacity: 0;
     width: 50%;
     background-color: black;
     color: aliceblue;
-    display: flex;
-    flex-direction: column;/*換行*/
-    align-items: center;/*水平至中*/
-    justify-content: center;/*高度至中*/
+    flex-direction: column; /*換行*/
+    align-items: center; /*水平至中*/
+    justify-content: center; /*高度至中*/
 }
 
-.info h2{
+.info h2 {
     font-size: 50px;
     margin-bottom: 30px;
     color: aliceblue;
     font-weight: bold;
 }
 
-.info p{
+.info p {
     text-align: center;
-    line-height: 2em;/*字體大小*/
+    line-height: 2em; /*字體大小*/
 }
 
 /*///////////////////////////////////////////////////////////////////////work///////////////////////////////////////////////////////////////////////////////////////*/
 
-.work{
-    background-color: black;
-    height: 780px;
+.work {
     display: flex;
     flex-direction: column;
-
+    background-color: black;
 }
 
-.work h2{
-    margin-top: 20px; 
+.work h2 {
+    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 60px;
     text-align: center;
@@ -95,15 +95,13 @@
     font-weight: bold;
 }
 
-.box{
-    position: relative;
+.box {
     display: flex;
+    justify-content: center;
     height: 650px;
-    margin: 0;
 }
 
-.box-left{
-    position: absolute;
+.indicator {
     background-color: black;
     border: #000000;
     width: 25vw;
@@ -111,158 +109,126 @@
     color: #707070;
     text-align: center;
     line-height: 600px;
-    font-size: 30px;
+    font-size: 100px;
     font-weight: bold;
-    cursor: pointer;
-   
 }
 
-.box-right{
-    position: absolute;
-    background-color: black;
-    border: #000000;
+.indicator #left {
+    left: 0;
+}
+
+.indicator #right {
     right: 0;
-    width: 25vw;
-    height: 600px;
-    color: #707070;
-    text-align: center;
-    line-height: 600px;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;/* 鼠标悬停在按钮上时，指针变成手型 */
-   
 }
 
-.box-right:hover {
-    color: #fff;
-}
-.box-left:hover {
+#right:hover,
+#left:hover {
     color: #fff;
 }
 
-
-.box-img{
+.box-img {
     display: none; /* 默认隐藏所有图片 */
-    position: absolute;
     top: 0;
     width: 70%;
-    height: 800px;
-    margin-left: 15vw;
+    height: inherit;
     opacity: 0; /* 默认不可见 */
-    transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
 }
 
-.box-img.active{
+.box-img.active {
     display: block; /* 显示当前图片 */
     opacity: 1;
 }
 
-
-.box-img img{    
+.box-img img {
     width: 100%;
-    height: 600px;;
+    height: inherit;
     object-fit: contain;
     object-position: center;
 }
 
-.box-zhiding{
-    position: absolute;
-    bottom: 3px;
+.captions {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
     text-align: center;
     width: 100%;
 }
 
-.box-zhiding ul{
-    padding: 0;
-    margin: 0 auto;
-    list-style: none;
-    display: inline-block;
-}
-
-.box-zhiding li{
-    width: 14px;
-    height: 14px;
-    border-radius: 100%;
+.captions button {
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 2rem;
+    border: none;
     background-color: #707070;
-    display: inline-block;
-    margin-right: 10px;
 }
 
-.box-zhiding li:hover{
+.captions button:hover {
     background-color: #fff;
 }
 
 /*///////////////////////////////////////////////////////////////////////social///////////////////////////////////////////////////////////////////////////////////////*/
 
-.social{
+.social {
     position: relative;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     height: 500px;
-    text-align: center;
     overflow: hidden;
-    align-items: center;
 }
 
 .blur-overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px;
+    height: 100%;
     background-image: url(../img/兵長賀圖.jpg);
-    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(10px); /* 模糊 */
+    filter: blur(5px);
+    z-index: 1;
 }
 
-.blur-color{
+.blur-color {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px;
-    background-color: rgba(0, 0, 0, 0.592); /* 半透明黑色叠加 */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+    z-index: 2;
 }
 
-.social h2{ 
-    position: relative; /* 保证文字在模糊层之上 */
-    margin-top: 60px; 
-    margin-bottom: 10px;
+.content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.content h2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     font-size: 60px;
     color: aliceblue;
     font-weight: bold;
 }
 
-.content{
-    position: relative;
+.social-button {
     display: flex;
-    top: 70px;
-}
-
-.social-button{
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.content a{
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.content a:hover{
-    color: rgb(202, 201, 141);
-    text-decoration: underline;
+    gap: 3rem;
 }
 
 /*///////////////////////////////////////////////////////////////////////media header///////////////////////////////////////////////////////////////////////////////////////*/
 
-@media (max-width: 80vw) {
-
+@media (max-width: 700px) {
     header {
-        position: fixed; 
+        position: fixed;
         backdrop-filter: blur(10px);
         height: 70px;
     }
-
 
     #menuToggle {
         display: block; /* 顯示按鈕 */
@@ -270,7 +236,7 @@
     }
 
     header ul {
-        position: fixed; 
+        position: fixed;
         display: none; /* 初始隱藏 */
         position: absolute;
         top: 100%;
@@ -280,96 +246,89 @@
         gap: 0;
         width: 100%; /* 滿寬 */
         text-align: right;
-
     }
 
-    h1{
+    h1 {
         line-height: 70px;
         font-size: 20px;
     }
 
     header ul li {
-        padding: 0.5rem;       
+        padding: 0.5rem;
     }
 
     header ul li a {
         display: block;
         line-height: 50px;
-        
     }
 
     /* 顯示選單時 */
     header ul.show {
         display: flex;
-        
     }
 
-/*///////////////////////////////////////////////////////////////////////media me///////////////////////////////////////////////////////////////////////////////////////*/
+    /*///////////////////////////////////////////////////////////////////////media me///////////////////////////////////////////////////////////////////////////////////////*/
 
-    .me{
+    .me {
         position: relative;
         height: 800px;
-        display: flex; 
+        display: flex;
         flex-direction: column;
     }
-    
-    .gradient-overlay2{
+
+    .gradient-overlay2 {
         display: none;
     }
-    
-    .me img{    
-        transform: translateY(100px); 
+
+    .me img {
+        transform: translateY(100px);
         opacity: 0; /* 初始不可见 */
         position: relative;
         width: 100%;
         height: 60%; /* 高和寬都填滿容器 */
         object-fit: cover; /* 和background-img設定background-size: cover一樣，圖片剛好填滿 */
         object-position: center;
-        
     }
-    
-    .info{
-        transform: translateY(100px); 
-        opacity: 0;   
+
+    .info {
+        transform: translateY(100px);
+        opacity: 0;
         width: 100%;
         background-color: black;
         color: aliceblue;
         display: flex;
-        flex-direction: column;/*換行*/
-        align-items: center;/*水平至中*/
-        justify-content: center;/*高度至中*/
+        flex-direction: column; /*換行*/
+        align-items: center; /*水平至中*/
+        justify-content: center; /*高度至中*/
     }
-    
-    .info h2{
+
+    .info h2 {
         margin-top: 20px;
         font-size: 30px;
         margin-bottom: 20px;
     }
-    
-    .info p{
+
+    .info p {
         margin-left: 20px;
         margin-right: 20px;
         text-align: center;
-        line-height: 2em;/*字體大小*/
+        line-height: 2em; /*字體大小*/
     }
 
-/*///////////////////////////////////////////////////////////////////////media work///////////////////////////////////////////////////////////////////////////////////////*/
+    /*///////////////////////////////////////////////////////////////////////media work///////////////////////////////////////////////////////////////////////////////////////*/
 
-    .work{
-        position: relative;
+    .work {
         height: 580px;
-    
     }
-    
-    .work h2{
-        margin-top: 80px; 
+
+    .work h2 {
+        margin-top: 80px;
         margin-bottom: 20px;
         font-size: 30px;
         text-align: center;
     }
-    
-    .box{
-        position: relative;
+
+    .box {
         display: flex;
         height: 450px;
         margin-bottom: 50px;
@@ -378,24 +337,23 @@
         align-items: center;
         object-fit: cover;
     }
-    
-    .box-left{
+
+    .box-left {
         position: absolute;
         transform: translateY(-7%);
         background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
         left: 0;
         width: 13vw;
-        height:  600px;
+        height: 600px;
         color: #ffffff;
         text-align: center;
         line-height: 600px;
         font-size: 30px;
         font-weight: bold;
         -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
-
     }
-    
-    .box-right{
+
+    .box-right {
         position: absolute;
         transform: translateY(-7%);
         background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
@@ -410,7 +368,7 @@
         -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
     }
 
-    .box-img{
+    .box-img {
         display: none; /* 默认隐藏所有图片 */
         position: relative;
         width: 100%;
@@ -419,28 +377,26 @@
         transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
         margin: 0;
     }
-    
-    .box-img.active{
+
+    .box-img.active {
         display: block; /* 显示当前图片 */
         opacity: 1;
     }
-    
-    
-    .box-img img{    
+
+    .box-img img {
         width: 100%;
-        height: 600px;;
+        height: 600px;
         object-fit: contain;
         object-position: center;
-    
-    }
-    
-    .box-zhiding{
-        visibility: hidden
     }
 
-/*///////////////////////////////////////////////////////////////////////media social///////////////////////////////////////////////////////////////////////////////////////*/
+    .box-zhiding {
+        visibility: hidden;
+    }
 
-    .social{
+    /*///////////////////////////////////////////////////////////////////////media social///////////////////////////////////////////////////////////////////////////////////////*/
+
+    .social {
         position: relative;
         display: flex;
         width: 100%;
@@ -449,7 +405,7 @@
         overflow: hidden;
         align-items: center;
     }
-    
+
     .blur-overlay {
         position: absolute;
         width: 100%;
@@ -460,29 +416,29 @@
         background-position: center;
         filter: blur(10px); /* 模糊 */
     }
-    
-    .blur-color{
+
+    .blur-color {
         position: absolute;
         width: 100%;
         height: 600px;
         background-color: rgba(0, 0, 0, 0.592); /* 半透明黑色叠加 */
     }
-    
-    .social h2{ 
+
+    .social h2 {
         position: relative; /* 保证文字在模糊层之上 */
-        margin-top: 30px; 
+        margin-top: 30px;
         margin-bottom: 10px;
         font-size: 40px;
     }
-    
-    .content{
+
+    .content {
         position: relative;
         display: flex;
         flex-direction: column;
         top: 40px;
     }
-    
-    .content li{
-        visibility: hidden
-    }    
+
+    .content li {
+        visibility: hidden;
+    }
 }

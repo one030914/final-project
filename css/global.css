@@ -1,36 +1,40 @@
-*{
+/* initial */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     user-select: none;
 }
 
-/* headings */
-h1{
-    position: absolute;
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    color: rgb(202, 201, 141);
+}
+
+h1 {
     color: aliceblue;
     font-weight: bold;
-    line-height: 100px;
-    margin-left: 7vw;
 }
 
-h2{
+h2 {
     color: aliceblue;
     font-weight: bold;
 }
 
-h3{
-    font-size: 100px;
+h3 {
     color: aliceblue;
 }
 
-h4{
-    font-size: 30px;
+h4 {
     color: aliceblue;
 }
 
 /* header */
-header nav{
+header nav {
     position: fixed;
     height: 100px;
     width: 100vw;
@@ -42,41 +46,38 @@ header nav{
     flex-direction: row;
 }
 
-header ul{
+nav h1 {
+    position: absolute;
+    margin-left: 7vw;
     line-height: 100px;
-    text-align: center; 
+}
+
+nav ul {
+    line-height: 100px;
+    text-align: center;
     width: 80%;
     margin: 0 auto; /*水平置中*/
 }
 
-header li{
+nav li {
     display: inline; /*橫式排列*/
     margin-right: 2vw; /*vw是整體視窗寬度的百分比，會依據縮放自動變化*/
 }
 
-header a{
-    color: aliceblue;
-    text-decoration: none;
-}
-
-header a:hover{
-    color: rgb(202, 201, 141);
-}
-
-h1 a:hover{
+h1 a:hover {
     color: aliceblue;
 }
 
 /* main */
-main{
+main {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #0d0d0d;
+    background-color: black;
 }
 
 /* title */
-.title{
+.title {
     position: relative;
     height: 100vh;
     display: flex;
@@ -85,25 +86,26 @@ main{
     overflow: hidden; /* 防止内容溢出 */
 }
 
-.title h2{
-    position: relative; 
+.title h2 {
     font-size: 80px;
-    line-height: 100vh;  
+    line-height: 100vh;
     text-align: center;
     color: aliceblue;
     font-weight: bold;
     -webkit-text-stroke: 2px black; /* 描边宽度和颜色 */
 }
 
-.gradient-overlay{
+.gradient-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.464);
-    background: radial-gradient(circle, rgba(3, 13, 49, 0) 20%, rgb(1, 8, 30) 80%); /*%是代表漸層範圍*/
+    background: radial-gradient(
+        circle,
+        rgba(3, 13, 49, 0) 20%,
+        rgb(1, 8, 30) 80%
+    ); /*%是代表漸層範圍*/
 }
 
 /*backToTop */
@@ -115,11 +117,12 @@ main{
     right: 10px;
     padding: 15px 30px;
     background-color: #525252; /* 按钮背景色 */
-    color: #fff;     /* 按钮文字颜色 */
-    border: none; 
+    color: #fff; /* 按钮文字颜色 */
+    border: none;
     border-radius: 15px; /* 圆形按钮 */
-    font-size: 16px; 
+    font-size: 16px;
     align-items: center;
+    z-index: 100;
 }
 
 #backToTop:hover {
@@ -127,16 +130,3 @@ main{
 }
 
 /* media */
-@media (max-width: 1200px){
-    ul {
-        display: none; /* 小螢幕預設隱藏 */
-        flex-direction: column;
-        margin-top: 10px;
-    }
-    ul.show {
-        display: flex; /* 小螢幕點擊後顯示 */
-    }
-    .toggler-btn {
-        display: inline-block;
-    }
-}

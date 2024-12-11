@@ -6,25 +6,30 @@
     object-fit: cover;
 }
 
-/*///////////////////////////////////////////////////////////////////////work///////////////////////////////////////////////////////////////////////////////////////*/
-
-.work {
-    position: relative;
-    height: 100vh;
+/*/ //////////////////////////////////////////////////////////////////////work///////////////////////////////////////////////////////////////////////////////////////*/
+/* App容器 */
+#app {
     width: 100%;
-    background-color: #000000;
+    height: auto;
 }
 
-#right {
-    height: inherit;
-    width: inherit;
+/* 每個作品區域 */
+.work {
     display: flex;
-    flex-direction: row; /*橫向左到右*/
+    justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+/* 偶數 */
+.even {
     .gradient-overlay2 {
         position: absolute;
-        width: 80%;
-        height: inherit;
+        left: 0;
+        width: 90%;
+        height: 100%;
         background: linear-gradient(
             to right,
             rgb(1, 4, 17) 50%,
@@ -33,16 +38,13 @@
     }
 }
 
-#left {
-    height: inherit;
-    width: inherit;
-    display: flex;
-    flex-direction: row-reverse; /*橫向右到左*/
-    align-items: center;
+/* 奇數 */
+.odd {
     .gradient-overlay2 {
         position: absolute;
-        width: 80%;
-        height: inherit;
+        right: 0;
+        width: 90%;
+        height: 100%;
         background: linear-gradient(
             to left,
             rgb(1, 4, 17) 50%,
@@ -53,31 +55,28 @@
 
 .text {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: left;
     height: 100vh;
-    width: 50%;
+    width: 45%;
     left: 10vw;
     z-index: 1;
 }
 
-.text h3 {
+.inner h3 {
     text-align: left;
     font-size: 80px;
     color: aliceblue;
 }
 
 .box {
-    justify-content: center;
-    align-items: center;
-    right: 100px;
-    top: 70px;
     width: 100vh;
     height: 80%;
 }
 
-.box img {
+.box .img-fluid {
     width: 100%;
     height: 100%;
     object-fit: cover;

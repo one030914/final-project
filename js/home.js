@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let social = gsap.timeline({
         scrollTrigger: {
             trigger: ".social",
-            start: "top top+=90%",
+            start: "top top+=80%",
             scrub: false,
             markers: false,
         },

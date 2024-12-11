@@ -31,6 +31,62 @@ document.addEventListener("DOMContentLoaded", function () {
             "<"
         ); //delay (seconds)
 
+    // **work** //
+    app = Vue.createApp({
+        data() {
+            return {
+                works: [
+                    {
+                        title: "天秤宮",
+                        description: "高中時畫的作品，第一次嘗試複雜的背景繪製",
+                        image: "../img/天秤宮.jpg",
+                    },
+                    {
+                        title: "Maria",
+                        description: "最近很喜歡的遊戲角色，又颯又美",
+                        image: "../img/天秤宮.jpg",
+                    },
+                ],
+            };
+        },
+    });
+    app.mount("#app");
+
+    const works = document.querySelectorAll(".work");
+    works.forEach((work) => {
+        let timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: work,
+                start: "top +=100px",
+                end: "+=30%",
+                scrub: true,
+                pin: true,
+                pinSpacing: true,
+                markers: true,
+            },
+        });
+        timeline
+            .fromTo(work, { opacity: 0 }, { opacity: 1 })
+            .fromTo(
+                work.querySelector(".gradient-overlay2"),
+                { y: 100, opacity: 0 }, // 出现前：向下偏移 100px，透明
+                { y: 0, opacity: 1 }, // 出现后：恢复原位，完全显示
+                "<"
+            )
+            .fromTo(
+                work.querySelector(".text"),
+                { y: 100, opacity: 0 }, // 出现前：向下偏移 100px，透明
+                { y: 0, opacity: 1 }, // 出现后：恢复原位，完全显示
+                "<"
+            )
+            .fromTo(
+                work.querySelector(".box"),
+                { y: 100, opacity: 0 }, // 出现前：向下偏移 100px，透明
+                { y: 0, opacity: 1 }, // 出现后：恢复原位，完全显示
+                "<"
+            );
+    });
+
     // **backToTop** //
     gsap.fromTo(
         "#backToTop",

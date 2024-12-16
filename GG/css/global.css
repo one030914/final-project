@@ -34,38 +34,54 @@ h4 {
 }
 
 /* header */
-header nav {
-    position: fixed;
-    height: 100px;
-    width: 100vw;
-    font-size: 1.5rem;
-    background-color: #292929d2;
-    backdrop-filter: blur(10px); /* 模糊背景 */
-    z-index: 100; /*always on top layer*/
-    display: flex;
-    flex-direction: row;
+#mainNav {
+    background-color: transparent;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
 }
 
-nav h1 {
-    position: absolute;
-    margin-left: 7vw;
-    line-height: 100px;
+#mainNav.shrink {
+    background-color: rgba(58, 58, 58, 0.5);
+    backdrop-filter: blur(10px);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
 }
 
-nav ul {
-    line-height: 100px;
+#mainNav .navbar-brand {
     text-align: center;
-    width: 80%;
-    margin: 0 auto; /*水平置中*/
+    width: 36.5vw;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    transition: font-size 0.3s ease-in-out;
 }
 
-nav li {
-    display: inline; /*橫式排列*/
-    margin-right: 2vw; /*vw是整體視窗寬度的百分比，會依據縮放自動變化*/
+#mainNav.shrink .navbar-brand {
+    font-size: 2rem;
 }
 
-h1 a:hover {
-    color: aliceblue;
+#mainNav .navbar-brand:hover {
+    color: white;
+}
+
+#mainNav .container-fluid .navbar-toggler {
+    font-size: 2rem;
+    color: white;
+}
+
+#navbarNav {
+    color: white;
+    font-size: 1.5rem;
+}
+
+#navbarNav .navbar-nav .nav-item .nav-link {
+    margin: auto 1vw;
+    color: white;
+}
+
+#navbarNav .navbar-nav .nav-item .nav-link:hover {
+    color: rgb(202, 201, 141);
 }
 
 /* main */
@@ -116,7 +132,7 @@ main {
     bottom: 10px;
     right: 10px;
     padding: 15px 30px;
-    background-color: #525252; /* 按钮背景色 */
+    background-color: rgba(58, 58, 58, 0.5);
     color: #fff; /* 按钮文字颜色 */
     border: none;
     border-radius: 15px; /* 圆形按钮 */
@@ -126,7 +142,5 @@ main {
 }
 
 #backToTop:hover {
-    background-color: #bfbfbf;
+    color: rgb(202, 201, 141);
 }
-
-/* media */

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .nav-items {
+            display: flex;
+            gap: 15px;
+            flex-wrap: nowrap; /* 防止項目換行 */
+        }
+        .nav-items a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            white-space: nowrap; /* 防止項目自動換行 */
+        }
+        .more {
+            display: none;
+            position: relative;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #444;
+            min-width: 150px;
+        }
+        .dropdown a {
+            display: block;
+            padding: 5px 10px;
+            color: #fff;
+        }
+        .more:hover .dropdown {
+            display: block;
+        }
+
+        @media (max-width: 1000px) {
+            .nav-items a {
+                display: none; /* 初步隱藏項目 */
+            }
+            .nav-items a.visible {
+                display: block; /* 顯示有空間的項目 */
+            }
+            .more {
+                display: block; /* 顯示「更多」按鈕 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>我的作品集</div>
+        <div class="nav-items" id="navItems">
+            <a href="#">首頁</a>
+            <a href="#">自我介紹</a>
+            <a href="#">電繪作品</a>
+            <a href="#">動畫作品</a>
+            <a href="#">3D建模作品</a>
+            <div class="more" id="moreMenu">
+                <a href="#">更多 ▼</a>
+                <div class="dropdown" id="dropdownMenu"></div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const navItems = document.querySelectorAll('.nav-items a:not(.more a)');
+        const moreMenu = document.getElementById('moreMenu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        function adjustNavbar() {
+            const navWidth = document.querySelector('.nav-items').clientWidth;
+            let availableWidth = navWidth - moreMenu.offsetWidth - 10; // 保留給「更多」按鈕的空間
+
+            dropdownMenu.innerHTML = ''; // 清空「更多」下拉選單
+            let totalWidth = 0;
+
+            navItems.forEach((item) => {
+                item.classList.remove('visible');
+                item.style.display = 'block';
+                totalWidth += item.offsetWidth;
+
+                if (totalWidth > availableWidth) {
+                    item.style.display = 'none';
+                    const dropdownItem = document.createElement('a');
+                    dropdownItem.href = item.href;
+                    dropdownItem.textContent = item.textContent;
+                    dropdownMenu.appendChild(dropdownItem);
+                } else {
+                    item.classList.add('visible');
+                }
+            });
+
+            // 如果「更多」下拉內沒有項目，隱藏「更多」按鈕
+            if (dropdownMenu.children.length === 0) {
+                moreMenu.style.display = 'none';
+            } else {
+                moreMenu.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('resize', adjustNavbar);
+        window.addEventListener('load', adjustNavbar);
+    </script>
+</body>
+</html>

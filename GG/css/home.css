@@ -1,21 +1,3 @@
-/*///////////////////////////////////////////////////////////////////////menu///////////////////////////////////////////////////////////////////////////////////////*/
-
-/* 下拉按鈕初始隱藏 */
-#menuToggle {
-    display: none;
-    margin-left: auto; /* 將按鈕推到最右 */
-    margin-right: 2rem; /* 與右邊留出距離 */
-    line-height: 100px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.menu {
-    display: none;
-}
-
 /*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
 
 #mp4 {
@@ -84,11 +66,13 @@
     display: flex;
     flex-direction: column;
     background-color: black;
+    height: auto;
 }
 
 .work h2 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    height: 100px;
+    margin-top: 50px;
+    margin-bottom: 0;
     font-size: 60px;
     text-align: center;
     color: aliceblue;
@@ -96,6 +80,7 @@
 }
 
 .box {
+    height: 500px;
     display: flex;
     justify-content: center;
     height: 650px;
@@ -105,11 +90,10 @@
     background-color: black;
     border: #000000;
     width: 25vw;
-    height: 600px;
+    height: 500px;
     color: #707070;
     text-align: center;
-    line-height: 600px;
-    font-size: 100px;
+    font-size: 70px;
     font-weight: bold;
 }
 
@@ -128,8 +112,7 @@
 
 .box-img {
     display: none; /* 默认隐藏所有图片 */
-    top: 0;
-    width: 70%;
+    width: 80%;
     height: inherit;
     opacity: 0; /* 默认不可见 */
 }
@@ -147,6 +130,7 @@
 }
 
 .captions {
+    height: 100px;
     display: flex;
     justify-content: center;
     padding: 2rem;
@@ -201,6 +185,7 @@
 }
 
 .content {
+    width: 100%;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -224,83 +209,23 @@
 
 /*///////////////////////////////////////////////////////////////////////media header///////////////////////////////////////////////////////////////////////////////////////*/
 
-@media (max-width: 700px) {
-    header {
-        position: fixed;
-        backdrop-filter: blur(10px);
-        height: 70px;
-    }
-
-    #menuToggle {
-        display: block; /* 顯示按鈕 */
-        line-height: 70px;
-    }
-
-    header ul {
-        position: fixed;
-        display: none; /* 初始隱藏 */
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: #444;
-        flex-direction: column; /* 改為垂直顯示 */
-        gap: 0;
-        width: 100%; /* 滿寬 */
-        text-align: right;
-    }
-
-    h1 {
-        line-height: 70px;
-        font-size: 20px;
-    }
-
-    header ul li {
-        padding: 0.5rem;
-    }
-
-    header ul li a {
-        display: block;
-        line-height: 50px;
-    }
-
-    /* 顯示選單時 */
-    header ul.show {
-        display: flex;
-    }
-
-    /*///////////////////////////////////////////////////////////////////////media me///////////////////////////////////////////////////////////////////////////////////////*/
-
+@media (max-width: 1000px) {
     .me {
-        position: relative;
-        height: 800px;
-        display: flex;
+        height: 600px;
         flex-direction: column;
     }
 
     .gradient-overlay2 {
-        display: none;
+        visibility: hidden;
     }
 
     .me img {
-        transform: translateY(100px);
-        opacity: 0; /* 初始不可见 */
-        position: relative;
         width: 100%;
-        height: 60%; /* 高和寬都填滿容器 */
-        object-fit: cover; /* 和background-img設定background-size: cover一樣，圖片剛好填滿 */
-        object-position: center;
+        height: 70%; /* 高和寬都填滿容器 */
     }
 
     .info {
-        transform: translateY(100px);
-        opacity: 0;
         width: 100%;
-        background-color: black;
-        color: aliceblue;
-        display: flex;
-        flex-direction: column; /*換行*/
-        align-items: center; /*水平至中*/
-        justify-content: center; /*高度至中*/
     }
 
     .info h2 {
@@ -312,134 +237,79 @@
     .info p {
         margin-left: 20px;
         margin-right: 20px;
-        text-align: center;
-        line-height: 2em; /*字體大小*/
     }
 
     /*///////////////////////////////////////////////////////////////////////media work///////////////////////////////////////////////////////////////////////////////////////*/
 
     .work {
-        height: 580px;
+        flex-direction: column;
+        height: 610px;
     }
 
     .work h2 {
-        margin-top: 80px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        margin-top: 0;
+        top: 0;
         font-size: 30px;
-        text-align: center;
     }
 
     .box {
+        height: 500px;
         display: flex;
-        height: 450px;
-        margin-bottom: 50px;
-        width: 100%;
-        justify-content: center; /* 图片居中 */
-        align-items: center;
         object-fit: cover;
+        width: 100%;
     }
 
-    .box-left {
+    .indicator {
+        width: 15vw;
         position: absolute;
-        transform: translateY(-7%);
-        background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
+        border: #00000000;
+        background-color: #00000000;
+        font-size: 50px;
+        -webkit-text-stroke: 0.5px rgb(91, 91, 91); /* 描边宽度和颜色 */
+    }
+
+    #left {
         left: 0;
-        width: 13vw;
-        height: 600px;
-        color: #ffffff;
-        text-align: center;
-        line-height: 600px;
-        font-size: 30px;
-        font-weight: bold;
-        -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
     }
 
-    .box-right {
-        position: absolute;
-        transform: translateY(-7%);
-        background-color: rgba(0, 0, 0, 0); /* 半透明背景 */
+    #right {
         right: 0;
-        width: 13vw;
-        height: 600px;
-        color: #ffffff;
-        text-align: center;
-        line-height: 600px;
-        font-size: 30px;
-        font-weight: bold;
-        -webkit-text-stroke: 0.5px rgb(75, 75, 75); /* 描边宽度和颜色 */
     }
 
     .box-img {
-        display: none; /* 默认隐藏所有图片 */
-        position: relative;
         width: 100%;
-        height: 650px;
-        opacity: 0; /* 默认不可见 */
-        transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
-        margin: 0;
     }
 
-    .box-img.active {
-        display: block; /* 显示当前图片 */
-        opacity: 1;
-    }
-
-    .box-img img {
-        width: 100%;
-        height: 600px;
-        object-fit: contain;
-        object-position: center;
-    }
-
-    .box-zhiding {
-        visibility: hidden;
+    .captions button {
+        height: 1rem;
+        width: 1rem;
     }
 
     /*///////////////////////////////////////////////////////////////////////media social///////////////////////////////////////////////////////////////////////////////////////*/
 
     .social {
-        position: relative;
         display: flex;
-        width: 100%;
-        height: 600px;
+        height: 400px;
         text-align: center;
-        overflow: hidden;
-        align-items: center;
     }
 
     .blur-overlay {
-        position: absolute;
-        width: 100%;
-        height: 600px;
-        background-image: url(../img/兵長賀圖.jpg);
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
         filter: blur(10px); /* 模糊 */
     }
 
     .blur-color {
-        position: absolute;
-        width: 100%;
         height: 600px;
         background-color: rgba(0, 0, 0, 0.592); /* 半透明黑色叠加 */
     }
 
-    .social h2 {
-        position: relative; /* 保证文字在模糊层之上 */
-        margin-top: 30px;
-        margin-bottom: 10px;
-        font-size: 40px;
-    }
-
     .content {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        top: 40px;
+        top: 30px;
     }
 
-    .content li {
-        visibility: hidden;
+    .content h2 {
+        margin-bottom: 1.5rem;
+        font-size: 45px;
     }
 }

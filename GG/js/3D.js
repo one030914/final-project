@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const backToTopButton = document.getElementById("backToTop");
     gsap.registerPlugin(ScrollTrigger);
 
     // **title** //
@@ -37,14 +36,38 @@ document.addEventListener("DOMContentLoaded", function () {
             return {
                 works: [
                     {
-                        title: "天秤宮",
-                        description: "高中時畫的作品，第一次嘗試複雜的背景繪製",
-                        image: "../img/天秤宮.jpg",
+                        title: "武士刀katana",
+                        description:
+                            "第一次用maya製作武器，花了很多時間研究製作武士刀模型的教程，也嘗試用maya貼膜貼出武士刀破舊的感覺",
+                        image: "/final-project-main/img/武器彩圖.jpg",
                     },
                     {
                         title: "Maria",
                         description: "最近很喜歡的遊戲角色，又颯又美",
-                        image: "../img/天秤宮.jpg",
+                        image: "/final-project-main/img/maria.JPG",
+                    },
+                    {
+                        title: "Mercy",
+                        description:
+                            "有一款叫overwatch的遊戲裡，我最喜歡的角色",
+                        image: "/final-project-main/img/天使.JPG",
+                    },
+                    {
+                        title: "龍年賀圖",
+                        description:
+                            "第一次挑戰畫寫實的龍，花了很多時間研究跟摸索",
+                        image: "/final-project-main/img/龍.JPG",
+                    },
+                    {
+                        title: "風信與慕情",
+                        description: "這是我很喜歡的一對小說角色",
+                        image: "/final-project-main/img/風情.JPG",
+                    },
+                    {
+                        title: "兵長",
+                        description:
+                            "之前很喜歡的一個動漫角色，我花了很多時間研究金屬的刻痕要怎麼繪製",
+                        image: "/final-project-main/img/兵長賀圖.jpg",
                     },
                 ],
             };
@@ -85,38 +108,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 { y: 0, opacity: 1 }, // 出现后：恢复原位，完全显示
                 "<"
             );
-    });
-
-    // **backToTop** //
-    gsap.fromTo(
-        "#backToTop",
-        { opacity: 0, y: 0 },
-        {
-            opacity: 1,
-            y: -10,
-            ease: "power1.in",
-            scrollTrigger: {
-                trigger: ".title",
-                start: "bottom top",
-                markers: false,
-                toggleActions: "play none none reverse", // 切换回到顶部时，重置 opacity 和 y 值
-                onEnter: () => {
-                    document.querySelector("#backToTop").style.pointerEvents =
-                        "auto";
-                },
-                onLeaveBack: () => {
-                    document.querySelector("#backToTop").style.pointerEvents =
-                        "none";
-                },
-            },
-        }
-    );
-    // 点击按钮回到顶部
-    backToTopButton.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0, // 滚动到顶部
-            behavior: "smooth", // 平滑滚动
-            opacity: 0,
-        });
     });
 });

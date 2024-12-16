@@ -1,0 +1,170 @@
+body{
+    min-height: 300vh;
+    background-color: black;
+}
+
+/*///////////////////////////////////////////////////////////////////////title///////////////////////////////////////////////////////////////////////////////////////*/
+
+#img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*/ //////////////////////////////////////////////////////////////////////work///////////////////////////////////////////////////////////////////////////////////////*/
+/* App容器 */
+#app {
+    width: 100%;
+    height: auto;
+}
+
+/* 每個作品區域 */
+.work {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+/* 偶數 */
+.even {
+    .gradient-overlay2 {
+        position: absolute;
+        left: 0;
+        width: 87%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            rgb(1, 4, 17) 50%,
+            rgba(3, 13, 49, 0) 70%
+        );
+        z-index: 1;
+    }
+    .text {
+        left: 0;
+    }
+    .box {
+        margin-left: 50vw;
+    }
+}
+
+/* 奇數 */
+.odd {
+    .gradient-overlay2 {
+        position: absolute;
+        right: 0;
+        width: 87%;
+        height: 100%;
+        background: linear-gradient(
+            to left,
+            rgb(1, 4, 17) 50%,
+            rgba(3, 13, 49, 0) 70%
+        );
+        z-index: 1;
+    }
+    .text {
+        right: 0;
+    }
+    .box {
+        margin-right: 50vw;
+    }
+}
+
+.text {
+    position: absolute;
+    /* border: 2px solid floralwhite; */
+    display: flex;
+    margin: 0 0 0 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: 100vh;
+    width: 45%;
+    z-index: 2;
+}
+
+.inner h3 {
+    /* border: 2px solid floralwhite; */
+    text-align: left;
+    font-size: 80px;
+    color: aliceblue;
+}
+
+.inner h4 {
+    /* border: 2px solid floralwhite; */
+    line-height: 1.5; /* 行間距 */
+    text-align: left;
+    font-size: 27px;
+    color: aliceblue;
+}
+
+.box {
+    display: flex;
+    border: 2px solid floralwhite;
+    /* width: 100vh; */
+    height: 80%;
+}
+
+.box .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}
+
+/* media */
+@media (max-width: 1000px) {
+    /* 每個作品區域 */
+    .work {
+        flex-direction: column;
+    }
+
+    /* 偶數 */
+    .even {
+        flex-direction: column-reverse;
+        .gradient-overlay2 {
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+                to top,
+                rgb(1, 4, 17) 50%,
+                rgba(3, 13, 49, 0) 70%
+            );
+        }
+    }
+
+    /* 奇數 */
+    .odd {
+        .gradient-overlay2 {
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+                to top,
+                rgb(1, 4, 17) 50%,
+                rgba(3, 13, 49, 0) 70%
+            );
+        }
+    }
+
+    .text {
+        margin: 0;
+        height: 20vh;
+        width: 85%;
+    }
+
+    .inner h3 {
+        font-size: 50px;
+        text-align: center;
+    }
+    .box {
+        margin: 0;
+        width: 100vh;
+        height: 70%;
+    }
+}
